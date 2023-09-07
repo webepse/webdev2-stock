@@ -31,7 +31,7 @@
 <body>
     <div class="container">
         <h2>Gestion des membres</h2>
-        <a href="" class='btn btn-primary my-3'>Ajouter un produit</a>
+        <a href="addMember.php" class='btn btn-primary my-3'>Ajouter un membre</a>
         <a href="dashboard.php" class='btn btn-secondary m-3'>Retour</a>
         <?php
             // messages flash
