@@ -4,6 +4,24 @@
     {
         header("LOCATION:index.php");
     }
+
+    if(isset($_GET['id']))
+    {
+        $id = htmlspecialchars($_GET['id']);
+    }else{
+        header("LOCATION:index.php");
+    }
+    require "../connexion.php";
+
+    $req = $bdd->prepare("SELECT * FROM admin WHERE id=?");
+    $req->execute([$id]);
+    if(!$don = $req->fetch())
+    {
+        $req->closeCursor();
+        header("LOCATION:members.php");
+    }
+    $req->closeCursor();
+
 ?>
 
 <!DOCTYPE html>
@@ -18,14 +36,14 @@
 </head>
 <body>
     <div class="container">
-        <h1>Ajouter un membre</h1>
-        <form action="treatmentAddMember.php" method="POST">
+        <h1>Modifier un membre</h1>
+        <form action="treatmentUpdateMember.php?id=<?= $id ?>" method="POST">
             <div class="form-group my-3">
                 <label for="login">Login: </label>
-                <input type="text" id="login" name="login" value="" class="form-control">
+                <input type="text" id="login" name="login" value="<?= $don['login'] ?>" class="form-control">
             </div>
             <div class="form-group my-3">
-                <label for="password">Mot de passe: </label>
+                <label for="password">Changer le Mot de passe: </label>
                 <input type="password" name="password" id="password" value="" class="form-control">
             </div>
             <div class="form-group my-3">
@@ -33,12 +51,9 @@
                 <input type="password" name="confirmPassword" id="confirmPassword" class="form-control">
             </div>
             <div class="form-group my-3">
-                <input type="submit" value="ajouter" class="btn btn-success">
+                <input type="submit" value="Modifier" class="btn btn-warning">
             </div>
-
-
         </form>
-
     </div>
 </body>
 </html>
