@@ -22,6 +22,7 @@
         $search->closeCursor();
         // supprimer l'image dans le dossier
         unlink("../images/".$donSearch['image']);
+        unlink("../images/mini_".$donSearch['image']);
         // supprimer l'entrée du produit dans la base de données
         $delete = $bdd->prepare("DELETE FROM products WHERE id=?");
         $delete->execute([$id]);
