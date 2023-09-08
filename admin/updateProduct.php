@@ -79,6 +79,34 @@
             </div>
             <div class="col-md-6">
                 <h3>Galerie images</h3>
+                <a href="addPicture.php?id=<?= $id ?>" class="btn btn-primary my-2">Ajouter une image</a>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class='text-center'>id</th>
+                            <th class='text-center'>image</th>
+                            <th class='text-center'>action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                            $gal = $bdd->prepare("SELECT * FROM images WHERE id_product=?");
+                            $gal->execute([$id]);
+                            while($donGal = $gal->fetch())
+                            {
+                                echo "<tr>";
+                                    echo "<td class='text-center'>".$donGal['id']."</td>";
+                                    echo "<td class='text-center'><img src='../images/".$donGal['fichier']."' class='img-fluid col-2'></td>";
+                                    echo "<td class='d-flex justify-content-center'>";
+                                        echo "<a href='' class='btn btn-danger'>Supprimer</a>";
+                                    echo "</td>";
+                                echo "</tr>";
+                            }
+                            $gal->closeCursor();
+
+                        ?>
+                    </tbody>
+                </table>
             </div>
 
         </div>
