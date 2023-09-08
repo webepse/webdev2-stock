@@ -17,28 +17,37 @@
     <title>Administration - Stock</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Ajouter un membre</h1>
-        <form action="treatmentAddMember.php" method="POST">
-            <div class="form-group my-3">
-                <label for="login">Login: </label>
-                <input type="text" id="login" name="login" value="" class="form-control">
-            </div>
-            <div class="form-group my-3">
-                <label for="password">Mot de passe: </label>
-                <input type="password" name="password" id="password" value="" class="form-control">
-            </div>
-            <div class="form-group my-3">
-                <label for="confirmPassword">Confirmer le mot de passe</label>
-                <input type="password" name="confirmPassword" id="confirmPassword" class="form-control">
-            </div>
-            <div class="form-group my-3">
-                <input type="submit" value="ajouter" class="btn btn-success">
-            </div>
+    <?php 
+        include("partials/header.php");
+    ?>
+    <main>
+        <div class="container">
+            <h2>Ajouter un membre</h2>
+            <a href="members.php" class="btn btn-secondary">Retour</a>
+            <form action="treatmentAddMember.php" method="POST">
+                <div class="form-group my-3">
+                    <label for="login">Login: </label>
+                    <input type="text" id="login" name="login" value="" class="form-control">
+                </div>
+                <div class="form-group my-3">
+                    <label for="password">Mot de passe: </label>
+                    <input type="password" name="password" id="password" value="" class="form-control">
+                </div>
+                <div class="form-group my-3">
+                    <label for="confirmPassword">Confirmer le mot de passe</label>
+                    <input type="password" name="confirmPassword" id="confirmPassword" class="form-control">
+                </div>
+                <div class="form-group my-3">
+                    <input type="submit" value="ajouter" class="btn btn-success">
+                </div>
 
 
-        </form>
+            </form>
 
-    </div>
+        </div>
+    </main>
+    <?php 
+        include("partials/footer.php");
+    ?>
 </body>
 </html>

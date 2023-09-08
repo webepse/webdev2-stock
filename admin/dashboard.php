@@ -28,8 +28,37 @@
     <?php 
         include("partials/header.php");
     ?>
-    <div class="container">
-      
-    </div>
+    <main>
+        <div class="container">
+        
+            <div class="p-5 my-3 bg-body-tertiary rounded-3">
+                <div class="container-fluid py-5">
+                    <h1 class="display-5 fw-bold">Dashboard</h1>
+                    <p class="col-md-8 fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima consequuntur, reiciendis iste assumenda perspiciatis fuga. Similique ad qui nulla repellendus, fugiat, adipisci veniam iusto, aliquam eaque error possimus consequatur praesentium?</p>
+                    <a href='addProduct.php' class="btn btn-primary btn-lg" type="button">Ajouter un produit</a>
+                </div>
+                </div>
+
+                <div class="row align-items-md-stretch">
+                <div class="col-md-6">
+                    <div class="h-100 p-4 text-bg-dark rounded-3">
+                    <h2>Members</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero labore veritatis totam, repellat ipsam voluptate perferendis at quo ullam eos.</p>
+                    <a href='addMember.php' class="btn btn-outline-light">Ajouter un membre</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="h-100 p-4 bg-body-tertiary border rounded-3">
+                    <h2>Contact</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet voluptatem sit, fugiat nulla minima nisi quisquam a modi cupiditate? Voluptates, eveniet modi reiciendis corrupti officiis eaque veritatis maiores nihil praesentium!</p>
+                    <a href='message.php' class="btn btn-outline-secondary">Voir les messages</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>    
+    <?php
+        include("partials/footer.php");
+    ?>
 </body>
 </html>

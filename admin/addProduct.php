@@ -19,29 +19,38 @@
     <title>Stock - Administration</title>
 </head>
 <body>
-    <div class="container">
-      <h2>Ajouter un produit</h2>
-      <form action="treatmentAddProduct.php" method="POST" enctype="multipart/form-data">
-        <div class="form-group my-3">
-            <label for="name">Nom: </label>
-            <input type="text" name="name" id="name" value="" class="form-control">
+    <?php 
+        include("partials/header.php");
+    ?>
+    <main>
+        <div class="container">
+        <h2>Ajouter un produit</h2>
+        <a href="products.php" class="btn btn-secondary">Retour</a>
+        <form action="treatmentAddProduct.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group my-3">
+                <label for="name">Nom: </label>
+                <input type="text" name="name" id="name" value="" class="form-control">
+            </div>
+            <div class="form-group my-3">
+                <label for="description">Description: </label>
+                <textarea name="description" id="description" class="form-control"></textarea>
+            </div>
+            <div class="form-group my-3">
+                <label for="price">Prix: </label>
+                <input type="number" name="price" id="price" step="0.01" value="" class="form-control">
+            </div>
+            <div class="form-group my-3">
+                <label for="image">Image: </label>
+                <input type="file" name="image" id="image" class="form-control">
+            </div>
+            <div class="form-group my-3">
+                <input type="submit" value="Ajouter" class="btn btn-success">
+            </div>
+        </form>
         </div>
-        <div class="form-group my-3">
-            <label for="description">Description: </label>
-            <textarea name="description" id="description" class="form-control"></textarea>
-        </div>
-        <div class="form-group my-3">
-            <label for="price">Prix: </label>
-            <input type="number" name="price" id="price" step="0.01" value="" class="form-control">
-        </div>
-        <div class="form-group my-3">
-            <label for="image">Image: </label>
-            <input type="file" name="image" id="image" class="form-control">
-        </div>
-        <div class="form-group my-3">
-            <input type="submit" value="Ajouter" class="btn btn-success">
-        </div>
-      </form>
-    </div>
+    </main>
+    <?php 
+        include("partials/footer.php");
+    ?>
 </body>
 </html>

@@ -48,54 +48,62 @@
     <title>Stock - Administration</title>
 </head>
 <body>
-    <div class="container">
-        <h2>Gestion des produits</h2>
-        <a href="addProduct.php" class='btn btn-primary my-3'>Ajouter un produit</a>
-        <a href="dashboard.php" class='btn btn-secondary m-3'>Retour</a>
-        <?php
-            // messages flash
-            if(isset($_GET['addsuccess']))
-            {
-                echo "<div class='alert alert-success'>Vous avez bien ajouté un produit à la base de données</div>";
-            }
-            if(isset($_GET['update']))
-            {
-                echo "<div class='alert alert-warning'>Le produit n°".$_GET['update']." a bien été mis à jour</div>";
-            }
-            if(isset($_GET['deletesuccess']))
-            {
-                echo "<div class='alert alert-danger'>Le produit n°".$_GET['deletesuccess']." a bien été supprimé</div>";
-            }
-        ?>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Nom</th>
-                    <th>Price</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                   
-                    $req = $bdd->query("SELECT * FROM products");
-                    while($don = $req->fetch())
-                    {
-                        echo "<tr>";
-                            echo "<td>".$don['id']."</td>";
-                            echo "<td>".$don['name']."</td>";
-                            echo "<td>".$don['price']."</td>";
-                            echo "<td>";
-                                echo "<a href='updateProduct.php?id=".$don['id']."' class='btn btn-warning mx-2'>Modifier</a>";
-                                echo "<a href='products.php?delete=".$don['id']."' class='btn btn-danger mx-2'>Supprimer</a>";
-                            echo "</td>";
-                        echo "</tr>";
-                    }
-                    $req->closeCursor();
-                ?>
-            </tbody>
-        </table> 
-    </div>
+    <?php 
+        include("partials/header.php");
+    ?>
+    <main>    
+        <div class="container">
+            <h2 class="fw-bold">Gestion des produits</h2>
+            <a href="addProduct.php" class='btn btn-primary my-3'>Ajouter un produit</a>
+            <a href="dashboard.php" class='btn btn-secondary m-3'>Retour</a>
+            <?php
+                // messages flash
+                if(isset($_GET['addsuccess']))
+                {
+                    echo "<div class='alert alert-success'>Vous avez bien ajouté un produit à la base de données</div>";
+                }
+                if(isset($_GET['update']))
+                {
+                    echo "<div class='alert alert-warning'>Le produit n°".$_GET['update']." a bien été mis à jour</div>";
+                }
+                if(isset($_GET['deletesuccess']))
+                {
+                    echo "<div class='alert alert-danger'>Le produit n°".$_GET['deletesuccess']." a bien été supprimé</div>";
+                }
+            ?>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center">Id</th>
+                        <th class="text-center">Nom</th>
+                        <th class="text-center">Price</th>
+                        <th class="d-flex justify-content-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    
+                        $req = $bdd->query("SELECT * FROM products");
+                        while($don = $req->fetch())
+                        {
+                            echo "<tr>";
+                                echo "<td class='text-center'>".$don['id']."</td>";
+                                echo "<td class='text-center'>".$don['name']."</td>";
+                                echo "<td class='text-center'>".$don['price']."</td>";
+                                echo "<td class='d-flex justify-content-center'>";
+                                    echo "<a href='updateProduct.php?id=".$don['id']."' class='btn btn-warning mx-2'>Modifier</a>";
+                                    echo "<a href='products.php?delete=".$don['id']."' class='btn btn-danger mx-2'>Supprimer</a>";
+                                echo "</td>";
+                            echo "</tr>";
+                        }
+                        $req->closeCursor();
+                    ?>
+                </tbody>
+            </table> 
+        </div>
+    </main>
+    <?php 
+        include("partials/footer.php");
+    ?>    
 </body>
 </html>
