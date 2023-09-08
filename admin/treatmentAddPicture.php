@@ -44,8 +44,11 @@
             {
                 // insertion dans la base de données
                 require "../connexion.php";
-                $insert = $bdd->prepare("INSERT INTO images(fichier,id_product) VALUES(?,?)");
-                $insert->execute([$fichiercpt,$id]);
+                $insert = $bdd->prepare("INSERT INTO images(fichier,id_product) VALUES(:fichier,:id)");
+                $insert->execute([
+                    ":fichier" => $fichiercpt,
+                    ":id" => $id
+                ]);
                 $insert->closeCursor();
                 header("LOCATION:updateProduct.php?id=".$id."&addsuccess=ok");
 
