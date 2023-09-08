@@ -25,6 +25,29 @@
     $req->closeCursor();
 
 
+    if(isset($_GET['delete']))
+    {
+        $idDelete = htmlspecialchars($_GET['delete']);
+
+        $verif = $bdd->prepare("SELECT * FROM images WHERE id=?");
+        $verif->execute([$idDelete]);
+        if($donVerif = $verif->fetch())
+        {
+            unlink('../images/'.$donVerif['fichier']);
+        }else{
+            $verif->closeCursor();
+            header("LOCATION:updateProduct.php?id=".$id);
+        }
+        $verif->closeCursor();
+
+        $delete = $bdd->prepare("DELETE FROM images WHERE id=?");
+        $delete->execute([$idDelete]);
+        $delete->closeCursor();
+
+        header("LOCATION:updateProduct.php?id=".$id."&deleteSuccess=".$idDelete);
+
+    }
+
 
 ?>
 
@@ -51,7 +74,7 @@
                 <a href="products.php" class="btn btn-secondary">Retour</a>
                 <form action="treatmentUpdateProduct.php?id=<?= $don['id'] ?>" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?= $don['id'] ?>">
-                    <div class="form-group my-3">1
+                    <div class="form-group my-3">
                         <label for="name">Nom: </label>
                         <input type="text" name="name" id="name" value="<?= $don['name'] ?>" class="form-control">
                     </div>
@@ -80,6 +103,21 @@
             <div class="col-md-6">
                 <h3>Galerie images</h3>
                 <a href="addPicture.php?id=<?= $id ?>" class="btn btn-primary my-2">Ajouter une image</a>
+                <?php 
+                    if(isset($_GET['picturerror']))
+                    {
+                        echo "<div class='alert alert-danger'>Une erreur est survenue (code erreur:".$_GET['picturerror'].")</div>";
+                    }
+                    if(isset($_GET['addsuccess']))
+                    {
+                        echo "<div class='alert alert-success'>Vous avez bien ajouté une image</div>";
+                    }
+                    if(isset($_GET['deleteSuccess']))
+                    {
+                        echo "<div class='alert alert-danger'>Vous avez bien supprimé l' image id ".$_GET['deleteSuccess']."</div>";
+                    }
+                    
+                ?>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -98,7 +136,7 @@
                                     echo "<td class='text-center'>".$donGal['id']."</td>";
                                     echo "<td class='text-center'><img src='../images/".$donGal['fichier']."' class='img-fluid col-2'></td>";
                                     echo "<td class='d-flex justify-content-center'>";
-                                        echo "<a href='' class='btn btn-danger'>Supprimer</a>";
+                                        echo "<a href='updateProduct.php?id=".$id."&delete=".$donGal['id']."' class='btn btn-danger'>Supprimer</a>";
                                     echo "</td>";
                                 echo "</tr>";
                             }
