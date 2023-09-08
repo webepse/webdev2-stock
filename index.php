@@ -35,6 +35,38 @@
             </div>
             <a href="products.php">Voir tous les produits</a>
         </div>
+        <div id="contact" class="container">
+            <h2>Contact</h2>
+            <?php
+                if(isset($_GET['error']))
+                {
+                    echo "<div class='alert alert-danger'>Une erreur est survenue (code erreur:".$_GET['error'].")</div>";
+                }
+                if(isset($_GET['contact']))
+                {
+                    echo "<div class='alert alert-success'>Votre message a bien été envoyé</div>";
+                }
+            ?>
+            <form action="treatment.php" method="POST">
+                <div class="form-group my-3">
+                    <label for="nom">Nom: </label>
+                    <input type="text" name="nom" id="nom" class="form-control">
+                </div>
+                <div class="form-group my-3">
+                    <label for="mail">E-mail: </label>
+                    <input type="email" name="mail" id="mail" class="form-control">
+                </div>
+                <div class="form-group my-3">
+                    <label for="message">Message: </label>
+                    <textarea name="message" id="message" class="form-control"></textarea>
+                </div>
+                <div class="form-group my-3">
+                    <input type="submit" value="Envoyer" class="btn btn-success">
+                </div>
+            </form>
+
+
+        </div>
 
     </main>
    

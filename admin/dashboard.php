@@ -51,7 +51,7 @@
                     <div class="h-100 p-4 bg-body-tertiary border rounded-3">
                     <h2>Contact</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet voluptatem sit, fugiat nulla minima nisi quisquam a modi cupiditate? Voluptates, eveniet modi reiciendis corrupti officiis eaque veritatis maiores nihil praesentium!</p>
-                    <a href='message.php' class="btn btn-outline-secondary">Voir les messages</a>
+                    <a href='contact.php' class="btn btn-outline-secondary">Voir les messages</a>
                     </div>
                 </div>
             </div>
