@@ -45,35 +45,44 @@
     ?>
     <main>
         <div class="container">
-        <h2>Modifier un produit</h2>
-        <a href="products.php" class="btn btn-secondary">Retour</a>
-        <form action="treatmentUpdateProduct.php?id=<?= $don['id'] ?>" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="id" value="<?= $don['id'] ?>">
-            <div class="form-group my-3">1
-                <label for="name">Nom: </label>
-                <input type="text" name="name" id="name" value="<?= $don['name'] ?>" class="form-control">
-            </div>
-            <div class="form-group my-3">
-                <label for="description">Description: </label>
-                <textarea name="description" id="description" class="form-control"><?= $don['description'] ?></textarea>
-            </div>
-            <div class="form-group my-3">
-                <label for="price">Prix: </label>
-                <input type="number" name="price" id="price" step="0.01" value="<?= $don['price'] ?>" class="form-control">
-            </div>
-            <div class="form-group my-3">
-                <label for="image">Image: </label>
-                <div class="row">
-                    <div class="col-4">
-                        <img src="../images/<?= $don['image'] ?>" class="img-fluid" alt="image de <?= $don['name'] ?>">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Modifier un produit</h2>
+                <a href="products.php" class="btn btn-secondary">Retour</a>
+                <form action="treatmentUpdateProduct.php?id=<?= $don['id'] ?>" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<?= $don['id'] ?>">
+                    <div class="form-group my-3">1
+                        <label for="name">Nom: </label>
+                        <input type="text" name="name" id="name" value="<?= $don['name'] ?>" class="form-control">
                     </div>
-                </div>
-                <input type="file" name="image" id="image" class="form-control">
+                    <div class="form-group my-3">
+                        <label for="description">Description: </label>
+                        <textarea name="description" id="description" class="form-control"><?= $don['description'] ?></textarea>
+                    </div>
+                    <div class="form-group my-3">
+                        <label for="price">Prix: </label>
+                        <input type="number" name="price" id="price" step="0.01" value="<?= $don['price'] ?>" class="form-control">
+                    </div>
+                    <div class="form-group my-3">
+                        <label for="image">Image: </label>
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="../images/<?= $don['image'] ?>" class="img-fluid" alt="image de <?= $don['name'] ?>">
+                            </div>
+                        </div>
+                        <input type="file" name="image" id="image" class="form-control">
+                    </div>
+                    <div class="form-group my-3">
+                        <input type="submit" value="Modifier" class="btn btn-warning">
+                    </div>
+                </form>
             </div>
-            <div class="form-group my-3">
-                <input type="submit" value="Modifier" class="btn btn-warning">
+            <div class="col-md-6">
+                <h3>Galerie images</h3>
             </div>
-        </form>
+
+        </div>
+       
         </div>
     </main>
     <?php 
